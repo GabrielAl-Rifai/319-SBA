@@ -1,0 +1,21 @@
+{
+  "name": "319-sba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielAl-Rifai/319-SBA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielAl-Rifai/319-SBA/issues"
+  },
+  "homepage": "https://github.com/GabrielAl-Rifai/319-SBA#readme"
+}
