@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const fruitsSchema = new mongoose.Schema({
+const climbsSchema = new mongoose.Schema({
   // Each property can have a type field that describdes
   // the valid data types for that field, and a
   // required field to specify whether it is required.
@@ -8,15 +8,15 @@ const fruitsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  age: {
+  difficulty: {
     type: Number,
     min: 0,
     required: true,
   },
-  readyToEat: {
+  accessibilty: {
     type: Boolean,
     required: true,
   },
 });
 
-export default mongoose.model(`Fruit`, fruitSchema);
+export default mongoose.model(`Climbs`, climbsSchema);
