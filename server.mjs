@@ -2,7 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import Fruits from "./models/fruitsSchema.mjs";
+import Fruits from "./models/climbsSchema.mjs";
 import fruits from "./utilities/data.js";
 
 //Configurations
@@ -17,8 +17,8 @@ app.use(express.json());
 //Routes
 //Seed Routes
 app.get("/seed", async (req, res) => {
-  await Fruits.deleteMany({});
-  await Fruits.create(fruits);
+  await Climbs.deleteMany({});
+  await Climbs.create(climbs);
 
   res.send(`Database Seeded`);
 });
@@ -26,10 +26,10 @@ app.get("/seed", async (req, res) => {
 //Create
 app.post("/", async (req, res) => {
   try {
-    let newFruit = new Fruits(req.body);
-    await newFruit.save();
+    let newClimb = new Climbs(req.body);
+    await newClimb.save();
 
-    res.json(newFruit);
+    res.json(newClimb);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Server Error" });
@@ -39,8 +39,8 @@ app.post("/", async (req, res) => {
 //Read
 app.get("/", async (req, res) => {
   try {
-    const allFruits = await Fruits.find({});
-    res.json(allFruits);
+    const allClimbs = await Climbs.find({});
+    res.json(allClimbs);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Server Error" });
@@ -50,13 +50,13 @@ app.get("/", async (req, res) => {
 //Update
 app.put("/:id", async (req, res) => {
   try {
-    const updatedFruit = await Fruits.findByIdAndUpdate(
+    const updatedClimbs = await Climbs.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
     );
 
-    res.json(updatedFruit);
+    res.json(updatedClimbs);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Server Error" });
@@ -66,7 +66,7 @@ app.put("/:id", async (req, res) => {
 //Delete
 app.delete("/:id", async (req, res) => {
   try {
-    await Fruits.findByIdAndDelete(req.params.id);
+    await Climbs.findByIdAndDelete(req.params.id);
 
     res.status(200).json({ msg: "Item Deleted" });
   } catch (err) {
