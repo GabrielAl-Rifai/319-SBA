@@ -7,14 +7,14 @@ const router = express.Router();
 
 //Get all route
 router.get("/", async (req, res) => {
-  let collection = await db.collection("rating");
+  let collection = await db.collection("ratings");
   let result = await collection.find({}).limit(10).toArray();
   res.json(result);
 });
 
-//Create POST new rating
+//Create POST new ratings
 router.post("/", async (req, res) => {
-  let collection = await db.collection("rating");
+  let collection = await db.collection("ratings");
   let newDocument = req.body;
 
   if (newDocument.climber_id) {
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
   res.json(result).status(201);
 });
 
-// Get a single rating entry
+// Get a single ratings entry
 router.get("/:id", async (req, res) => {
   let collection = await db.collection("climbs");
   let query = { _id: new ObjectId(req.params.id) };
@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
 
 //Get a climbr by ID
 router.get("/climbr/:climbrID", async (req, res) => {
-  let collection = await db.collection("rating");
+  let collection = await db.collection("ratings");
   let query = { climbr_id: Number(req.params.climbrID) };
   let result = await collection.find(query).toArray();
 
@@ -60,7 +60,7 @@ router.delete("/climbr/:climbrID", async (req, res) => {
 //
 //Get a climb by climb_id
 router.get("/climb/:climbID", async (req, res) => {
-  let collection = await db.collection("rating");
+  let collection = await db.collection("ratings");
   let query = { climb_id: Number(req.params.climbID) };
   let result = await collection.find(query).toArray();
 
@@ -70,7 +70,7 @@ router.get("/climb/:climbID", async (req, res) => {
 
 //Update a climb_id PATCH
 router.patch("/climb/:climbID", async (req, res) => {
-  let collection = await db.collection("rating");
+  let collection = await db.collection("ratings");
   let query = { climb_id: Number(req.params.climbID) };
 
   let result = await collection.updateMany(query, {
