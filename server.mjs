@@ -2,8 +2,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import Fruits from "./models/climbsSchema.mjs";
-import fruits from "./utilities/data.js";
+import Climbs from "./models/ratingsSchema.mjs";
+import climbs from "./utilities/data.js";
 
 //Configurations
 dotenv.config();
@@ -15,6 +15,8 @@ await mongoose.connect(process.env.MONGO_URI);
 app.use(express.json());
 
 //Routes
+app.use('/ratings', ratingsRouter);
+
 //Seed Routes
 app.get("/seed", async (req, res) => {
   await Climbs.deleteMany({});
