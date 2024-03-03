@@ -1,2 +1,37 @@
 node_modules/
 .env
+
+
+# ERROR WHEN npm i cors
+# 4 files changed, 29 insertions(+), 27 deletions(-)
+# delete mode 100644 index.mjs
+# Anthonys-iMac:319-SBA blasterbrain$ 
+# *  History restored 
+
+
+# The default interactive shell is now zsh.
+# To update your account to use zsh, please run `chsh -s /bin/zsh`.
+# For more details, please visit https://support.apple.com/kb/HT208050.
+# Anthonys-iMac:319-SBA blasterbrain$ npm i cors
+# npm WARN EBADENGINE Unsupported engine {
+# npm WARN EBADENGINE   package: 'bson@6.4.0',
+# npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+# npm WARN EBADENGINE   current: { node: 'v16.16.0', npm: '8.11.0' }
+# npm WARN EBADENGINE }
+# npm WARN EBADENGINE Unsupported engine {
+# npm WARN EBADENGINE   package: 'mongodb@6.4.0',
+# npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+# npm WARN EBADENGINE   current: { node: 'v16.16.0', npm: '8.11.0' }
+# npm WARN EBADENGINE }
+# npm WARN EBADENGINE Unsupported engine {
+# npm WARN EBADENGINE   package: 'mongoose@8.2.0',
+# npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+# npm WARN EBADENGINE   current: { node: 'v16.16.0', npm: '8.11.0' }
+# npm WARN EBADENGINE }
+# npm WARN EBADENGINE Unsupported engine {
+# npm WARN EBADENGINE   package: 'mongodb@6.3.0',
+# npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+# npm WARN EBADENGINE   current: { node: 'v16.16.0', npm: '8.11.0' }
+# npm WARN EBADENGINE }
+
+# added 2 packages, removed 2 packages, and audited 115 packages in 593ms
