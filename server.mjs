@@ -4,6 +4,10 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import Climbs from "./models/ratingsSchema.mjs";
 import climbs from "./utilities/data.js";
+import cors from "cors";
+import "./loadEnvironment.mjs";
+import "express-async-errors";
+import posts from "./routes/posts.mjs";
 
 //Configurations
 dotenv.config();
@@ -11,11 +15,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 await mongoose.connect(process.env.MONGO_URI);
 
-//Middleware
+//Middlewares
 app.use(express.json());
+app.use(cors());
+
+// Load the /posts routes
+app.use("/posts", posts);
 
 //Routes
-app.use('/ratings', ratingsRouter);
+app.use("/ratings", ratingsRouter);
 
 //Seed Routes
 app.get("/seed", async (req, res) => {
@@ -82,7 +90,7 @@ app.use((err, _req, res, next) => {
   res.status(500).send("Seems like we messed up somewhere...");
 });
 
-//Listen
+//Listen/ Start the Express server
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`);
 });
