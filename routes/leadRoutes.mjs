@@ -4,22 +4,21 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-
 //Get all routes
 router.get("/", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("leadRoutes");
   let result = await collection.find({}).limit(10).toArray();
   res.json(result);
 });
 
-//Create POST new ratings
+//Create POST new leadRoutes
 router.post("/", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("leadRoutes");
   let newDocument = req.body;
 
-  if (newDocument.climber_id) {
-    newDocument.climbr_id = newDocument.climber_id;
-    delete newDocument.climber_id;
+  if (newDocument.leadRoute_id) {
+    newDocument.climbr_id = newDocument.leadRoute_id;
+    delete newDocument.leadRoute_id;
   }
 
   let result = await collection.insertOne(newDocument);
@@ -27,9 +26,9 @@ router.post("/", async (req, res) => {
   res.json(result).status(201);
 });
 
-// Get a single ratings entry
+// Get a single leadRoutes entry
 router.get("/:id", async (req, res) => {
-  let collection = await db.collection("climbs");
+  let collection = await db.collection("leadRoutes");
   let query = { _id: new ObjectId(req.params.id) };
   let result = await collection.findOne(query);
 
@@ -39,8 +38,8 @@ router.get("/:id", async (req, res) => {
 
 //Get a climber by ID
 router.get("/climbr/:climbrID", async (req, res) => {
-  let collection = await db.collection("ratings");
-  let query = { climbr_id: Number(req.params.climbrID) };
+  let collection = await db.collection("leadRoutes");
+  let query = { climbr_id: Number(req.params.climberID) };
   let result = await collection.find(query).toArray();
 
   if (!result) res.status(404).send("Not found");
@@ -49,8 +48,8 @@ router.get("/climbr/:climbrID", async (req, res) => {
 
 //Delete a climber by id
 router.delete("/climbr/:climbrID", async (req, res) => {
-  let collection = await db.collection("climbs");
-  let query = { climbr_id: Number(req.params.climbrID) };
+  let collection = await db.collection("newDocument.leadRoute_id");
+  let query = { climbr_id: Number(req.params.climberID) };
   let result = await collection.deleteMany(query);
 
   if (result.deletedCount === 0) res.status(404).send("Not found");
@@ -60,8 +59,8 @@ router.delete("/climbr/:climbrID", async (req, res) => {
 //
 //Get a climb by climb_id
 router.get("/climb/:climbID", async (req, res) => {
-  let collection = await db.collection("ratings");
-  let query = { climb_id: Number(req.params.climbID) };
+  let collection = await db.collection("leadRoutes");
+  let query = { climb_id: Number(req.params.leadRouteID) };
   let result = await collection.find(query).toArray();
 
   if (!result) res.status(404).send("Not found");
@@ -70,8 +69,8 @@ router.get("/climb/:climbID", async (req, res) => {
 
 //Update a climb_id PATCH
 router.patch("/climb/:climbID", async (req, res) => {
-  let collection = await db.collection("ratings");
-  let query = { climb_id: Number(req.params.climbID) };
+  let collection = await db.collection("leadRoutes");
+  let query = { climb_id: Number(req.params.leadRouteID) };
 
   let result = await collection.updateMany(query, {
     $set: { climb_id: req.body.climb_id },

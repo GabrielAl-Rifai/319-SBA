@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 
 const leadRoutesSchema = new mongoose.Schema({
-  // Each property can have a type field that describdes
-  // the valid data types for that field, and a
-  // required field to specify whether it is required.
+
   name: {
     type: String,
     required: true,
@@ -18,5 +16,15 @@ const leadRoutesSchema = new mongoose.Schema({
     required: true,
   },
 });
+leadRouteSchema.index({ name: 1 });
+leadRouteSchema.index({ difficulty: 1 });
+leadRouteSchema.index({ accesibility: 1 });
 
-export default mongoose.model(`LeadRoutes`, leadRoutesSchema);
+  difficulty: { 
+    type: Number,
+    min: 1,
+    message: "The difficulty must be greater than 1",
+    required: true,
+  };
+
+export default mongoose.model(`LeadRoutes`, leadRouteSchema);

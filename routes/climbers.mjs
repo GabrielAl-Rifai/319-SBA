@@ -4,7 +4,6 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-
 //Get all routes
 router.get("/", async (req, res) => {
   let collection = await db.collection("ratings");

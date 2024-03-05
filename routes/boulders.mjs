@@ -4,22 +4,21 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-
 //Get all routes
 router.get("/", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("boulders");
   let result = await collection.find({}).limit(10).toArray();
   res.json(result);
 });
 
-//Create POST new ratings
+//Create POST new boulders
 router.post("/", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("boulders");
   let newDocument = req.body;
 
-  if (newDocument.climber_id) {
-    newDocument.climbr_id = newDocument.climber_id;
-    delete newDocument.climber_id;
+  if (newDocument.boulder_id) {
+    newDocument.climbr_id = newDocument.boulder_id;
+    delete newDocument.boulder_id;
   }
 
   let result = await collection.insertOne(newDocument);
@@ -27,9 +26,9 @@ router.post("/", async (req, res) => {
   res.json(result).status(201);
 });
 
-// Get a single ratings entry
+// Get a single boulders entry
 router.get("/:id", async (req, res) => {
-  let collection = await db.collection("climbs");
+  let collection = await db.collection("boulder");
   let query = { _id: new ObjectId(req.params.id) };
   let result = await collection.findOne(query);
 
@@ -39,7 +38,7 @@ router.get("/:id", async (req, res) => {
 
 //Get a climber by ID
 router.get("/climbr/:climbrID", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("boulders");
   let query = { climbr_id: Number(req.params.climbrID) };
   let result = await collection.find(query).toArray();
 
@@ -49,7 +48,7 @@ router.get("/climbr/:climbrID", async (req, res) => {
 
 //Delete a climber by id
 router.delete("/climbr/:climbrID", async (req, res) => {
-  let collection = await db.collection("climbs");
+  let collection = await db.collection("boulder");
   let query = { climbr_id: Number(req.params.climbrID) };
   let result = await collection.deleteMany(query);
 
@@ -60,7 +59,7 @@ router.delete("/climbr/:climbrID", async (req, res) => {
 //
 //Get a climb by climb_id
 router.get("/climb/:climbID", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("boulders");
   let query = { climb_id: Number(req.params.climbID) };
   let result = await collection.find(query).toArray();
 
@@ -70,7 +69,7 @@ router.get("/climb/:climbID", async (req, res) => {
 
 //Update a climb_id PATCH
 router.patch("/climb/:climbID", async (req, res) => {
-  let collection = await db.collection("ratings");
+  let collection = await db.collection("boulders");
   let query = { climb_id: Number(req.params.climbID) };
 
   let result = await collection.updateMany(query, {
