@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const climberSchema = new mongoose.Schema({
+const leadRoutesSchema = new mongoose.Schema({
   // Each property can have a type field that describdes
   // the valid data types for that field, and a
   // required field to specify whether it is required.
@@ -8,12 +8,7 @@ const climberSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  boulder_attempts: {
-    type: Number,
-    min: 0,
-    required: true,
-  },
-  leadRoute_attempts: {
+  difficulty: {
     type: Number,
     min: 0,
     required: true,
@@ -24,4 +19,4 @@ const climberSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model(`Climbers`, climberSchema);
+export default mongoose.model(`LeadRoutes`, leadRoutesSchema);

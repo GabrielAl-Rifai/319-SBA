@@ -3,9 +3,9 @@ import db from "../db/conn.mjs";
 import { ObjectId } from "mongodb";
 
 const router = express.Router();
-//Body parser?
 
-//Get all route
+
+//Get all routes
 router.get("/", async (req, res) => {
   let collection = await db.collection("ratings");
   let result = await collection.find({}).limit(10).toArray();
@@ -37,7 +37,7 @@ router.get("/:id", async (req, res) => {
   else res.send(result).status(200);
 });
 
-//Get a climbr by ID
+//Get a climber by ID
 router.get("/climbr/:climbrID", async (req, res) => {
   let collection = await db.collection("ratings");
   let query = { climbr_id: Number(req.params.climbrID) };
@@ -47,7 +47,7 @@ router.get("/climbr/:climbrID", async (req, res) => {
   else res.send(result).status(200);
 });
 
-//Delete a climbr by id
+//Delete a climber by id
 router.delete("/climbr/:climbrID", async (req, res) => {
   let collection = await db.collection("climbs");
   let query = { climbr_id: Number(req.params.climbrID) };
