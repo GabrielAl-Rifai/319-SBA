@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-//Get all routes
+//Get all boulders
 router.get("/", async (req, res) => {
   let collection = await db.collection("boulders");
   let result = await collection.find({}).limit(10).toArray();

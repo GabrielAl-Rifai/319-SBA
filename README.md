@@ -22,6 +22,26 @@ boulderSchema.index({ name: 1 });
 boulderSchema.index({ difficulty: 1 });
 boulderSchema.index({ accesibility: 1 });
 
+## Usage
+
+GET /api/climbers: Retrieve information about climbers.
+POST /api/climbers: Add a new climbers.
+PATCH /api/climbers: Add or update a rating for a climbers.
+DELETE /api/climbers: Delete a single climber.
+GET /api/boulders: Retrieve information about boulders.
+POST /api/boulders: Add a boulder.
+PATCH /api/boulder: Add or update a rating for a boulder.
+DELETE /api/boulder: Delete a single boulder.
+GET /api/leadRoute: Retrieve information about leadRoutes.  
+POST /api/leadRoute: Add a leadRoute.
+PATCH /api/leadRoute: Add or update a rating for a leadRoute.
+DELETE /api/leadRoute: Delete a single leadRoute.
+
+## Validation
+
+Buolder difficulty equal or greater to 10.5
+Message Response: "The difficulty must be greater than 10.5."
+
 ## Example
 
 ## Response
@@ -35,8 +55,3 @@ difficulty: { message: "The difficulty must be greater than 10.5.",
 ```bash
 
 ```
-
-boulderSchema.index({ name: 1 });
-boulderSchema.index({ difficulty: 1 });
-boulderSchema.index({ accesibility: 1 });
-difficulty: { message: "The difficulty must be greater than 10.5.",
